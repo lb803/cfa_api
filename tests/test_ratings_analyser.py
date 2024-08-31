@@ -21,13 +21,13 @@ def test_ratings_analyser_init_successful(feedbacks) -> None:
                          [([MockFeedback(1), MockFeedback(3)], 2),
                           ([MockFeedback(3), MockFeedback(3)], 3),
                           ([MockFeedback(1), MockFeedback(4)], 2.5)])
-def test_get_mean_valid_ratings(feedbacks, expected_mean_value):
+def test_get_mean_valid_ratings(feedbacks, expected_mean_value) -> None:
     analyser = RatingsAnalyser(feedbacks)
 
     assert analyser.get_mean() == expected_mean_value
 
 
-def test_get_mean_no_ratings():
+def test_get_mean_no_ratings() -> None:
     analyser = RatingsAnalyser([])
 
     assert analyser.get_mean() == None

@@ -25,3 +25,15 @@ class RatingsAnalyser:
 
         return [feedback.rating for feedback in feedback_samples]
 
+    def get_mean(self) -> Optional[float]:
+        """Get the mean value of the feedback ratings
+
+        :return: The mean value of the feedback ratings. None if
+            the list of feedbacks is empty.
+        """
+        try:
+            mean_value = mean(self.ratings)
+        except StatisticsError:
+            return None
+
+        return mean_value

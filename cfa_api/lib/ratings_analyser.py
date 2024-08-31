@@ -6,8 +6,8 @@ from schemas.feedback import Feedback
 
 
 class RatingsAnalyser:
+    """Class to perform analysis operations on feedback ratings"""
     def __init__(self, feedbacks: list[Feedback]) -> None:
-        """Class to perform analysis operations on feedback ratings"""
         self.feedbacks = feedbacks
 
         self.ratings = self._extract_ratings()

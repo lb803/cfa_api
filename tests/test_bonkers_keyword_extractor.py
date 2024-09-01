@@ -30,11 +30,17 @@ def test_bonkers_keyword_extractor_text_gt_limit(text: str, limit: int) -> None:
     assert len(extracted_words) == limit
 
 
-@pytest.mark.parametrize("text,limit",
-                         [("apple grapes", 5),
-                          ("", 5)])
+@pytest.mark.parametrize("text,limit", [("apple grapes", 5)])
 def test_bonkers_keyword_extractor_text_lt_limit(text: str, limit: int) -> None:
     extractor = BonkersKeywordExtractor()
     extracted_words = extractor.extract_keywords(text, limit)
 
     assert len(extracted_words) == len(text.split())
+
+
+@pytest.mark.parametrize("text,limit", [("", 5), (" ", 5), ("   ", 5)])
+def test_bonkers_keyword_extractor_empty_text(text: str, limit: int) -> None:
+    extractor = BonkersKeywordExtractor()
+    extracted_words = extractor.extract_keywords(text, limit)
+
+    assert extracted_words == None

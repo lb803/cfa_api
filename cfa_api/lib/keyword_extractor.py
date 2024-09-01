@@ -6,11 +6,11 @@ interface which we can use to add new extractors.
 """
 
 from collections import Counter
-from typing import Protocol
+from typing import Optional, Protocol
 
 
 class KeywordExtractor(Protocol):
-    def extract_keywords(self, text: str, limit: int) -> list[str]:
+    def extract_keywords(self, text: str, limit: int) -> Optional[list[str]]:
         """Extract keywords from text strings
         
         :param text: Text to analyse.
@@ -25,13 +25,17 @@ class BonkersKeywordExtractor:
     
     To be used to demo.
     """
-    def extract_keywords(self, text: str, limit: int) -> list[str]:
+    def extract_keywords(self, text: str, limit: int) -> Optional[list[str]]:
         """Extract keywords from text strings
 
         :param text: Text to analyse.
         :param limit: Max number of words to return.
         """
         words = text.split()
+
+        if not words:
+            return None
+
         word_counts = Counter(words)
         most_common_words = word_counts.most_common(limit)
     

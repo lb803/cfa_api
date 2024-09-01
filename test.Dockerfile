@@ -10,10 +10,10 @@ COPY requirements.txt .
 
 RUN python3 -m pip install --requirement requirements.txt
 
-COPY tests .
+COPY tests tests
 
-COPY cfa_api .
+COPY cfa_api cfa_api
 
-ENTRYPOINT [ "python3" ]
+ENTRYPOINT [ "python" ]
 
-CMD [ "-m", "pytest" ]
+CMD [ "-m", "pytest", "tests/"]

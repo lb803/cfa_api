@@ -2,7 +2,7 @@
 from statistics import mean, StatisticsError
 from typing import Optional
 
-from schemas.feedback import Feedback
+from cfa_api.schemas.feedback import Feedback
 
 
 class RatingsAnalyser:
